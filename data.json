@@ -1,0 +1,1066 @@
+{
+  "metadata": {
+    "title": "Treasury duration, term premium, and mortgage rates",
+    "retrieved_date": "2026-11-09",
+    "as_of_date": "2026-11-09",
+    "monthly_start": "2019-01",
+    "monthly_end": "2026-10",
+    "monthly_observations": 94,
+    "default_start_month": "2019-01",
+    "default_end_month": "2025-12",
+    "aggregation": "Arithmetic mean of each source's non-missing observations dated within each calendar month. Daily term premiums and Treasury yields, and weekly mortgage-rate observations, are averaged separately then joined on month. No forward-filling, interpolation, or synthetic observations. Modified duration is calculated for each daily Treasury yield and averaged within the month. November 2026 is incomplete and excluded.",
+    "rate_units": "Percent per year. A difference of 1.00 in the rate fields equals one percentage point or 100 basis points.",
+    "duration_units": "Years",
+    "duration_method": {
+      "label": "Estimated constant-maturity Treasury benchmark modified duration",
+      "face_value": 100,
+      "annual_coupon_percent": 4,
+      "coupon_frequency": 2,
+      "years_to_maturity": 10,
+      "discount_yield": "FRED DGS10 / 100",
+      "calculation": "20 semiannual payments. Cash flow is $2 at periods 1-19 and $102 at period 20. PV_k = CF_k / (1 + y/2)^k. Macaulay duration = sum((k/2)*PV_k)/sum(PV_k). Modified duration = Macaulay duration/(1+y/2).",
+      "interpretation": "Standardized 10-year, 4% coupon benchmark repriced at each daily constant-maturity yield. It is not the measured duration or realized return of one security/CUSIP. The fixed maturity avoids aging effects across the historical comparison."
+    },
+    "sources": [
+      {
+        "id": "ACMTP10",
+        "field": "term_premium_pct",
+        "title": "New York Fed ACM 10-year Treasury term premium",
+        "frequency": "Daily",
+        "sheet": "ACM Daily",
+        "source_field": "ACMTP10",
+        "units": "Percent",
+        "page_url": "https://www.newyorkfed.org/research/data_indicators/term-premia-tabs",
+        "download_url": "https://www.newyorkfed.org/medialibrary/media/research/data_indicators/ACMTermPremium.xls",
+        "notes": "Model-estimated term premium. Current historical vintage may be revised as model estimates update. The NY Fed workbook's ACM Monthly sheet is end-of-month data and was NOT used for these monthly means.",
+        "first_observation": "2019-01-02",
+        "last_observation": "2026-11-06",
+        "non_missing_observations": 1964,
+        "missing_observations": 0,
+        "raw_file": "ACMTermPremium.xls",
+        "sha256": "c17f936c7eadce44ce2b7a5a4bc5354fd81e02b3cba2a914ef502d9467310726"
+      },
+      {
+        "id": "DGS10",
+        "field": "treasury_yield_pct",
+        "title": "Market Yield on U.S. Treasury Securities at 10-Year Constant Maturity, Quoted on an Investment Basis",
+        "frequency": "Daily",
+        "units": "Percent, not seasonally adjusted",
+        "page_url": "https://fred.stlouisfed.org/series/DGS10",
+        "download_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DGS10&cosd=2019-01-01&coed=2026-11-09",
+        "citation": "Board of Governors of the Federal Reserve System (US), DGS10, retrieved from FRED, Federal Reserve Bank of St. Louis, November 9, 2026.",
+        "first_observation": "2019-01-02",
+        "last_observation": "2026-11-06",
+        "non_missing_observations": 1964,
+        "missing_observations": 84,
+        "raw_file": "DGS10.csv",
+        "sha256": "6f5a3aca7eb4cdac0432de688a34391a228ac868389e2277b91cdc0f49251f8c"
+      },
+      {
+        "id": "MORTGAGE30US",
+        "field": "mortgage_rate_pct",
+        "title": "30-Year Fixed Rate Mortgage Average in the United States",
+        "frequency": "Weekly, ending Thursday",
+        "units": "Percent, not seasonally adjusted",
+        "page_url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
+        "download_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=MORTGAGE30US&cosd=2019-01-01&coed=2026-11-09",
+        "citation": "Freddie Mac, 30-Year Fixed Rate Mortgage Average in the United States [MORTGAGE30US], retrieved from FRED, Federal Reserve Bank of St. Louis, November 9, 2026. Copyright Freddie Mac.",
+        "notes": "PMMS methodology changed on November 17, 2022, from a lender survey to mortgage applications submitted to Freddie Mac. Acknowledge this break in comparisons spanning 2022.",
+        "first_observation": "2019-01-03",
+        "last_observation": "2026-11-05",
+        "non_missing_observations": 410,
+        "missing_observations": 0,
+        "raw_file": "MORTGAGE30US.csv",
+        "sha256": "9bb74a64f0e0d0e3f1f9b5067996804cbbb48de334b09e99a6396278f0bbda0b"
+      }
+    ],
+    "caveats": [
+      "Monthly calendar means align frequency but source observation dates within the month differ.",
+      "Correlation and endpoint co-movement do not establish causation.",
+      "The term premium is an estimate, not an observed spread between Treasury maturities.",
+      "The mortgage rate contains credit, prepayment, servicing, and other spreads beyond Treasury term premium.",
+      "Historical ACM estimates reflect the downloaded vintage; this analysis does not claim real-time forecasting performance.",
+      "Duration is a standardized benchmark calculation, not an individual bond observation."
+    ]
+  },
+  "monthly": [
+    {
+      "month": "2019-01",
+      "treasury_yield_pct": 2.713809523809524,
+      "term_premium_pct": -0.5855883316861247,
+      "mortgage_rate_pct": 4.464,
+      "modified_duration_years": 8.329219319448535,
+      "treasury_observations": 21,
+      "term_premium_observations": 21,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2019-02",
+      "treasury_yield_pct": 2.6763157894736844,
+      "term_premium_pct": -0.5914299202029504,
+      "mortgage_rate_pct": 4.37,
+      "modified_duration_years": 8.333648838207582,
+      "treasury_observations": 19,
+      "term_premium_observations": 19,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2019-03",
+      "treasury_yield_pct": 2.570952380952381,
+      "term_premium_pct": -0.626670345696969,
+      "mortgage_rate_pct": 4.265,
+      "modified_duration_years": 8.346066775516942,
+      "treasury_observations": 21,
+      "term_premium_observations": 21,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2019-04",
+      "treasury_yield_pct": 2.532380952380952,
+      "term_premium_pct": -0.6142097516682348,
+      "mortgage_rate_pct": 4.1425,
+      "modified_duration_years": 8.350622702999036,
+      "treasury_observations": 21,
+      "term_premium_observations": 21,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2019-05",
+      "treasury_yield_pct": 2.395,
+      "term_premium_pct": -0.6704021493327824,
+      "mortgage_rate_pct": 4.072,
+      "modified_duration_years": 8.36677810819071,
+      "treasury_observations": 22,
+      "term_premium_observations": 22,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2019-06",
+      "treasury_yield_pct": 2.074,
+      "term_premium_pct": -0.7908953287776037,
+      "mortgage_rate_pct": 3.8024999999999998,
+      "modified_duration_years": 8.404417254050138,
+      "treasury_observations": 20,
+      "term_premium_observations": 20,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2019-07",
+      "treasury_yield_pct": 2.059090909090909,
+      "term_premium_pct": -0.8249660250859836,
+      "mortgage_rate_pct": 3.765,
+      "modified_duration_years": 8.406161005057934,
+      "treasury_observations": 22,
+      "term_premium_observations": 22,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2019-08",
+      "treasury_yield_pct": 1.6263636363636365,
+      "term_premium_pct": -1.1990423035129554,
+      "mortgage_rate_pct": 3.6159999999999997,
+      "modified_duration_years": 8.456556954178083,
+      "treasury_observations": 22,
+      "term_premium_observations": 22,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2019-09",
+      "treasury_yield_pct": 1.6995,
+      "term_premium_pct": -1.1503439996838396,
+      "mortgage_rate_pct": 3.605,
+      "modified_duration_years": 8.448063358461495,
+      "treasury_observations": 20,
+      "term_premium_observations": 20,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2019-10",
+      "treasury_yield_pct": 1.7068181818181818,
+      "term_premium_pct": -1.067205176873991,
+      "mortgage_rate_pct": 3.6879999999999997,
+      "modified_duration_years": 8.447215091023914,
+      "treasury_observations": 22,
+      "term_premium_observations": 22,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2019-11",
+      "treasury_yield_pct": 1.8121052631578947,
+      "term_premium_pct": -0.97262130979012,
+      "mortgage_rate_pct": 3.6950000000000003,
+      "modified_duration_years": 8.43497311579282,
+      "treasury_observations": 19,
+      "term_premium_observations": 19,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2019-12",
+      "treasury_yield_pct": 1.8628571428571428,
+      "term_premium_pct": -0.9095810140216815,
+      "mortgage_rate_pct": 3.72,
+      "modified_duration_years": 8.429062356454287,
+      "treasury_observations": 21,
+      "term_premium_observations": 21,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2020-01",
+      "treasury_yield_pct": 1.7576190476190479,
+      "term_premium_pct": -0.9503503985877477,
+      "mortgage_rate_pct": 3.624,
+      "modified_duration_years": 8.441307430805761,
+      "treasury_observations": 21,
+      "term_premium_observations": 21,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2020-02",
+      "treasury_yield_pct": 1.5042105263157897,
+      "term_premium_pct": -1.137873499042578,
+      "mortgage_rate_pct": 3.4650000000000003,
+      "modified_duration_years": 8.470716849969605,
+      "treasury_observations": 19,
+      "term_premium_observations": 19,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2020-03",
+      "treasury_yield_pct": 0.87,
+      "term_premium_pct": -1.2412993409450266,
+      "mortgage_rate_pct": 3.45,
+      "modified_duration_years": 8.543803240635286,
+      "treasury_observations": 22,
+      "term_premium_observations": 22,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2020-04",
+      "treasury_yield_pct": 0.6576190476190477,
+      "term_premium_pct": -1.2807866940572634,
+      "mortgage_rate_pct": 3.306,
+      "modified_duration_years": 8.568129943207436,
+      "treasury_observations": 21,
+      "term_premium_observations": 21,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2020-05",
+      "treasury_yield_pct": 0.674,
+      "term_premium_pct": -1.2385574782891502,
+      "mortgage_rate_pct": 3.2325,
+      "modified_duration_years": 8.566260406728485,
+      "treasury_observations": 20,
+      "term_premium_observations": 20,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2020-06",
+      "treasury_yield_pct": 0.7286363636363636,
+      "term_premium_pct": -1.1688798435432464,
+      "mortgage_rate_pct": 3.1625,
+      "modified_duration_years": 8.560009747954878,
+      "treasury_observations": 22,
+      "term_premium_observations": 22,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2020-07",
+      "treasury_yield_pct": 0.6236363636363637,
+      "term_premium_pct": -1.2974740768155166,
+      "mortgage_rate_pct": 3.016,
+      "modified_duration_years": 8.572012998938023,
+      "treasury_observations": 22,
+      "term_premium_observations": 22,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2020-08",
+      "treasury_yield_pct": 0.65,
+      "term_premium_pct": -1.2461889178004502,
+      "mortgage_rate_pct": 2.935,
+      "modified_duration_years": 8.568999392028255,
+      "treasury_observations": 21,
+      "term_premium_observations": 21,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2020-09",
+      "treasury_yield_pct": 0.6795238095238095,
+      "term_premium_pct": -1.192746864362332,
+      "mortgage_rate_pct": 2.89,
+      "modified_duration_years": 8.56562974630145,
+      "treasury_observations": 21,
+      "term_premium_observations": 21,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2020-10",
+      "treasury_yield_pct": 0.7871428571428571,
+      "term_premium_pct": -1.0557311748597034,
+      "mortgage_rate_pct": 2.834,
+      "modified_duration_years": 8.55331703700448,
+      "treasury_observations": 21,
+      "term_premium_observations": 21,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2020-11",
+      "treasury_yield_pct": 0.8700000000000001,
+      "term_premium_pct": -0.9561700934956249,
+      "mortgage_rate_pct": 2.765,
+      "modified_duration_years": 8.543824440812925,
+      "treasury_observations": 19,
+      "term_premium_observations": 19,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2020-12",
+      "treasury_yield_pct": 0.9336363636363636,
+      "term_premium_pct": -0.8254338136164588,
+      "mortgage_rate_pct": 2.684,
+      "modified_duration_years": 8.536526688793744,
+      "treasury_observations": 22,
+      "term_premium_observations": 22,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2021-01",
+      "treasury_yield_pct": 1.0810526315789473,
+      "term_premium_pct": -0.597952894927853,
+      "mortgage_rate_pct": 2.735,
+      "modified_duration_years": 8.519584544888623,
+      "treasury_observations": 19,
+      "term_premium_observations": 19,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2021-02",
+      "treasury_yield_pct": 1.2578947368421052,
+      "term_premium_pct": -0.31873718213599334,
+      "mortgage_rate_pct": 2.81,
+      "modified_duration_years": 8.499199421989898,
+      "treasury_observations": 19,
+      "term_premium_observations": 19,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2021-03",
+      "treasury_yield_pct": 1.6108695652173912,
+      "term_premium_pct": 0.14164114401917943,
+      "mortgage_rate_pct": 3.0825,
+      "modified_duration_years": 8.458360719634285,
+      "treasury_observations": 23,
+      "term_premium_observations": 23,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2021-04",
+      "treasury_yield_pct": 1.635,
+      "term_premium_pct": 0.1330739549789685,
+      "mortgage_rate_pct": 3.06,
+      "modified_duration_years": 8.455565340403364,
+      "treasury_observations": 22,
+      "term_premium_observations": 22,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2021-05",
+      "treasury_yield_pct": 1.621,
+      "term_premium_pct": 0.16421028157418754,
+      "mortgage_rate_pct": 2.9625,
+      "modified_duration_years": 8.457191740077294,
+      "treasury_observations": 20,
+      "term_premium_observations": 20,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2021-06",
+      "treasury_yield_pct": 1.5190909090909093,
+      "term_premium_pct": -0.07710410169387664,
+      "mortgage_rate_pct": 2.975,
+      "modified_duration_years": 8.469008916794742,
+      "treasury_observations": 22,
+      "term_premium_observations": 22,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2021-07",
+      "treasury_yield_pct": 1.3185714285714287,
+      "term_premium_pct": -0.4298294143384554,
+      "mortgage_rate_pct": 2.868,
+      "modified_duration_years": 8.492203773420423,
+      "treasury_observations": 21,
+      "term_premium_observations": 21,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2021-08",
+      "treasury_yield_pct": 1.2831818181818182,
+      "term_premium_pct": -0.5302859507202595,
+      "mortgage_rate_pct": 2.8425000000000002,
+      "modified_duration_years": 8.496292214343397,
+      "treasury_observations": 22,
+      "term_premium_observations": 22,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2021-09",
+      "treasury_yield_pct": 1.3747619047619049,
+      "term_premium_pct": -0.4780555908137876,
+      "mortgage_rate_pct": 2.9,
+      "modified_duration_years": 8.485709257684164,
+      "treasury_observations": 21,
+      "term_premium_observations": 21,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2021-10",
+      "treasury_yield_pct": 1.5825,
+      "term_premium_pct": -0.3689787832183075,
+      "mortgage_rate_pct": 3.0675,
+      "modified_duration_years": 8.461657059668736,
+      "treasury_observations": 20,
+      "term_premium_observations": 20,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2021-11",
+      "treasury_yield_pct": 1.5595,
+      "term_premium_pct": -0.5547488327822339,
+      "mortgage_rate_pct": 3.0675,
+      "modified_duration_years": 8.4643231919509,
+      "treasury_observations": 20,
+      "term_premium_observations": 20,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2021-12",
+      "treasury_yield_pct": 1.4649999999999999,
+      "term_premium_pct": -0.755726090373392,
+      "mortgage_rate_pct": 3.098,
+      "modified_duration_years": 8.475274537158269,
+      "treasury_observations": 22,
+      "term_premium_observations": 22,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2022-01",
+      "treasury_yield_pct": 1.764,
+      "term_premium_pct": -0.5573982926779031,
+      "mortgage_rate_pct": 3.4450000000000003,
+      "modified_duration_years": 8.440572347345363,
+      "treasury_observations": 20,
+      "term_premium_observations": 20,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2022-02",
+      "treasury_yield_pct": 1.9342105263157894,
+      "term_premium_pct": -0.6788056920567861,
+      "mortgage_rate_pct": 3.7625,
+      "modified_duration_years": 8.42074082694199,
+      "treasury_observations": 19,
+      "term_premium_observations": 19,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2022-03",
+      "treasury_yield_pct": 2.1278260869565218,
+      "term_premium_pct": -0.7721448110371718,
+      "mortgage_rate_pct": 4.172,
+      "modified_duration_years": 8.398068783450274,
+      "treasury_observations": 23,
+      "term_premium_observations": 23,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2022-04",
+      "treasury_yield_pct": 2.7475,
+      "term_premium_pct": -0.47408218565808236,
+      "mortgage_rate_pct": 4.9825,
+      "modified_duration_years": 8.325218815405416,
+      "treasury_observations": 20,
+      "term_premium_observations": 20,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2022-05",
+      "treasury_yield_pct": 2.8980952380952383,
+      "term_premium_pct": -0.29762071266125595,
+      "mortgage_rate_pct": 5.2299999999999995,
+      "modified_duration_years": 8.307407890181931,
+      "treasury_observations": 21,
+      "term_premium_observations": 21,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2022-06",
+      "treasury_yield_pct": 3.1433333333333335,
+      "term_premium_pct": -0.32950136774682487,
+      "mortgage_rate_pct": 5.522,
+      "modified_duration_years": 8.278281614517788,
+      "treasury_observations": 21,
+      "term_premium_observations": 21,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2022-07",
+      "treasury_yield_pct": 2.896,
+      "term_premium_pct": -0.6282755313492536,
+      "mortgage_rate_pct": 5.4125,
+      "modified_duration_years": 8.30765480049578,
+      "treasury_observations": 20,
+      "term_premium_observations": 20,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2022-08",
+      "treasury_yield_pct": 2.8978260869565218,
+      "term_premium_pct": -0.899158111002926,
+      "mortgage_rate_pct": 5.2225,
+      "modified_duration_years": 8.307428334193958,
+      "treasury_observations": 23,
+      "term_premium_observations": 23,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2022-09",
+      "treasury_yield_pct": 3.5190476190476194,
+      "term_premium_pct": -0.6196598237773158,
+      "mortgage_rate_pct": 6.112,
+      "modified_duration_years": 8.233436910992783,
+      "treasury_observations": 21,
+      "term_premium_observations": 21,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2022-10",
+      "treasury_yield_pct": 3.9835000000000003,
+      "term_premium_pct": -0.3624812953727826,
+      "mortgage_rate_pct": 6.9,
+      "modified_duration_years": 8.177679030173088,
+      "treasury_observations": 20,
+      "term_premium_observations": 20,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2022-11",
+      "treasury_yield_pct": 3.8909999999999996,
+      "term_premium_pct": -0.4962730626430618,
+      "mortgage_rate_pct": 6.805,
+      "modified_duration_years": 8.1888123343845,
+      "treasury_observations": 20,
+      "term_premium_observations": 20,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2022-12",
+      "treasury_yield_pct": 3.616190476190476,
+      "term_premium_pct": -0.7922096712752119,
+      "mortgage_rate_pct": 6.364,
+      "modified_duration_years": 8.221829920375074,
+      "treasury_observations": 21,
+      "term_premium_observations": 21,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2023-01",
+      "treasury_yield_pct": 3.5315,
+      "term_premium_pct": -0.7938760771325802,
+      "mortgage_rate_pct": 6.2725,
+      "modified_duration_years": 8.231982041877245,
+      "treasury_observations": 20,
+      "term_premium_observations": 20,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2023-02",
+      "treasury_yield_pct": 3.7468421052631578,
+      "term_premium_pct": -0.7348152374806134,
+      "mortgage_rate_pct": 6.2575,
+      "modified_duration_years": 8.206149199476112,
+      "treasury_observations": 19,
+      "term_premium_observations": 19,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2023-03",
+      "treasury_yield_pct": 3.6630434782608696,
+      "term_premium_pct": -0.6622900222841361,
+      "mortgage_rate_pct": 6.544,
+      "modified_duration_years": 8.21618360397569,
+      "treasury_observations": 23,
+      "term_premium_observations": 23,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2023-04",
+      "treasury_yield_pct": 3.46,
+      "term_premium_pct": -0.7257168342903076,
+      "mortgage_rate_pct": 6.342499999999999,
+      "modified_duration_years": 8.240536065525669,
+      "treasury_observations": 20,
+      "term_premium_observations": 20,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2023-05",
+      "treasury_yield_pct": 3.5736363636363637,
+      "term_premium_pct": -0.6018890000388282,
+      "mortgage_rate_pct": 6.425,
+      "modified_duration_years": 8.226929566373293,
+      "treasury_observations": 22,
+      "term_premium_observations": 22,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2023-06",
+      "treasury_yield_pct": 3.7480952380952384,
+      "term_premium_pct": -0.7990558016445714,
+      "mortgage_rate_pct": 6.714,
+      "modified_duration_years": 8.206022894831776,
+      "treasury_observations": 21,
+      "term_premium_observations": 21,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2023-07",
+      "treasury_yield_pct": 3.8994999999999997,
+      "term_premium_pct": -0.7706181148712552,
+      "mortgage_rate_pct": 6.84,
+      "modified_duration_years": 8.187815182909263,
+      "treasury_observations": 20,
+      "term_premium_observations": 20,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2023-08",
+      "treasury_yield_pct": 4.167826086956522,
+      "term_premium_pct": -0.48553805361196284,
+      "mortgage_rate_pct": 7.072,
+      "modified_duration_years": 8.155448983877129,
+      "treasury_observations": 23,
+      "term_premium_observations": 23,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2023-09",
+      "treasury_yield_pct": 4.379,
+      "term_premium_pct": -0.22828773952719433,
+      "mortgage_rate_pct": 7.2,
+      "modified_duration_years": 8.129875533497323,
+      "treasury_observations": 20,
+      "term_premium_observations": 20,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2023-10",
+      "treasury_yield_pct": 4.798095238095239,
+      "term_premium_pct": 0.3099097009624094,
+      "mortgage_rate_pct": 7.62,
+      "modified_duration_years": 8.07889796037489,
+      "treasury_observations": 21,
+      "term_premium_observations": 21,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2023-11",
+      "treasury_yield_pct": 4.502857142857143,
+      "term_premium_pct": 0.0845247068320906,
+      "mortgage_rate_pct": 7.442,
+      "modified_duration_years": 8.114844243619443,
+      "treasury_observations": 21,
+      "term_premium_observations": 21,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2023-12",
+      "treasury_yield_pct": 4.0200000000000005,
+      "term_premium_pct": -0.2715562874257357,
+      "mortgage_rate_pct": 6.815,
+      "modified_duration_years": 8.173282190483034,
+      "treasury_observations": 20,
+      "term_premium_observations": 20,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2024-01",
+      "treasury_yield_pct": 4.058095238095238,
+      "term_premium_pct": -0.1693172880071407,
+      "mortgage_rate_pct": 6.6425,
+      "modified_duration_years": 8.168704477782104,
+      "treasury_observations": 21,
+      "term_premium_observations": 21,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2024-02",
+      "treasury_yield_pct": 4.2075000000000005,
+      "term_premium_pct": -0.14600412023435022,
+      "mortgage_rate_pct": 6.776000000000001,
+      "modified_duration_years": 8.150649010593055,
+      "treasury_observations": 20,
+      "term_premium_observations": 20,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2024-03",
+      "treasury_yield_pct": 4.2085,
+      "term_premium_pct": -0.216966896438759,
+      "mortgage_rate_pct": 6.82,
+      "modified_duration_years": 8.150534984357703,
+      "treasury_observations": 20,
+      "term_premium_observations": 20,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2024-04",
+      "treasury_yield_pct": 4.539090909090909,
+      "term_premium_pct": -0.07434302488468174,
+      "mortgage_rate_pct": 6.9925,
+      "modified_duration_years": 8.110439522506962,
+      "treasury_observations": 22,
+      "term_premium_observations": 22,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2024-05",
+      "treasury_yield_pct": 4.482272727272727,
+      "term_premium_pct": -0.086005483544518,
+      "mortgage_rate_pct": 7.06,
+      "modified_duration_years": 8.117354883277288,
+      "treasury_observations": 22,
+      "term_premium_observations": 22,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2024-06",
+      "treasury_yield_pct": 4.3052631578947365,
+      "term_premium_pct": -0.21285862020488552,
+      "mortgage_rate_pct": 6.9175,
+      "modified_duration_years": 8.13882339116446,
+      "treasury_observations": 19,
+      "term_premium_observations": 19,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2024-07",
+      "treasury_yield_pct": 4.248636363636364,
+      "term_premium_pct": -0.06603161497281963,
+      "mortgage_rate_pct": 6.8475,
+      "modified_duration_years": 8.145677085656066,
+      "treasury_observations": 22,
+      "term_premium_observations": 22,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2024-08",
+      "treasury_yield_pct": 3.8709090909090906,
+      "term_premium_pct": -0.20419289787316777,
+      "mortgage_rate_pct": 6.5,
+      "modified_duration_years": 8.191260318846245,
+      "treasury_observations": 22,
+      "term_premium_observations": 22,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2024-09",
+      "treasury_yield_pct": 3.7235,
+      "term_premium_pct": -0.20418595038639537,
+      "mortgage_rate_pct": 6.18,
+      "modified_duration_years": 8.208975758557177,
+      "treasury_observations": 20,
+      "term_premium_observations": 20,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2024-10",
+      "treasury_yield_pct": 4.095454545454545,
+      "term_premium_pct": 0.07457483511207016,
+      "mortgage_rate_pct": 6.428,
+      "modified_duration_years": 8.16417806593497,
+      "treasury_observations": 22,
+      "term_premium_observations": 22,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2024-11",
+      "treasury_yield_pct": 4.35578947368421,
+      "term_premium_pct": 0.19919270903627614,
+      "mortgage_rate_pct": 6.805,
+      "modified_duration_years": 8.132700535760607,
+      "treasury_observations": 19,
+      "term_premium_observations": 19,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2024-12",
+      "treasury_yield_pct": 4.3914285714285715,
+      "term_premium_pct": 0.2614120078769505,
+      "mortgage_rate_pct": 6.715,
+      "modified_duration_years": 8.12835864655054,
+      "treasury_observations": 21,
+      "term_premium_observations": 21,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2025-01",
+      "treasury_yield_pct": 4.629047619047618,
+      "term_premium_pct": 0.5322986899166656,
+      "mortgage_rate_pct": 6.958,
+      "modified_duration_years": 8.099507316908804,
+      "treasury_observations": 21,
+      "term_premium_observations": 21,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2025-02",
+      "treasury_yield_pct": 4.451052631578947,
+      "term_premium_pct": 0.33444904634645634,
+      "mortgage_rate_pct": 6.842499999999999,
+      "modified_duration_years": 8.121139430753093,
+      "treasury_observations": 19,
+      "term_premium_observations": 19,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2025-03",
+      "treasury_yield_pct": 4.2804761904761905,
+      "term_premium_pct": 0.3485444788850847,
+      "mortgage_rate_pct": 6.65,
+      "modified_duration_years": 8.141827909580167,
+      "treasury_observations": 21,
+      "term_premium_observations": 21,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2025-04",
+      "treasury_yield_pct": 4.279047619047619,
+      "term_premium_pct": 0.5570781634024131,
+      "mortgage_rate_pct": 6.725,
+      "modified_duration_years": 8.141989497912558,
+      "treasury_observations": 21,
+      "term_premium_observations": 21,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2025-05",
+      "treasury_yield_pct": 4.423809523809524,
+      "term_premium_pct": 0.7186852828024174,
+      "mortgage_rate_pct": 6.816,
+      "modified_duration_years": 8.124449383867479,
+      "treasury_observations": 21,
+      "term_premium_observations": 21,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2025-06",
+      "treasury_yield_pct": 4.3835,
+      "term_premium_pct": 0.6870005530736962,
+      "mortgage_rate_pct": 6.8175,
+      "modified_duration_years": 8.12934090224887,
+      "treasury_observations": 20,
+      "term_premium_observations": 20,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2025-07",
+      "treasury_yield_pct": 4.391818181818182,
+      "term_premium_pct": 0.7099341319079333,
+      "mortgage_rate_pct": 6.720000000000001,
+      "modified_duration_years": 8.12833464905723,
+      "treasury_observations": 22,
+      "term_premium_observations": 22,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2025-08",
+      "treasury_yield_pct": 4.2647619047619045,
+      "term_premium_pct": 0.7010651170342437,
+      "mortgage_rate_pct": 6.5875,
+      "modified_duration_years": 8.143731313509592,
+      "treasury_observations": 21,
+      "term_premium_observations": 21,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2025-09",
+      "treasury_yield_pct": 4.12047619047619,
+      "term_premium_pct": 0.6212019408483371,
+      "mortgage_rate_pct": 6.3525,
+      "modified_duration_years": 8.161174682136803,
+      "treasury_observations": 21,
+      "term_premium_observations": 21,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2025-10",
+      "treasury_yield_pct": 4.0618181818181816,
+      "term_premium_pct": 0.5504760366181021,
+      "mortgage_rate_pct": 6.254,
+      "modified_duration_years": 8.168256965995193,
+      "treasury_observations": 22,
+      "term_premium_observations": 22,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2025-11",
+      "treasury_yield_pct": 4.0938888888888885,
+      "term_premium_pct": 0.5969939800226212,
+      "mortgage_rate_pct": 6.2375,
+      "modified_duration_years": 8.164387501753408,
+      "treasury_observations": 18,
+      "term_premium_observations": 18,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2025-12",
+      "treasury_yield_pct": 4.1431818181818185,
+      "term_premium_pct": 0.709316858335876,
+      "mortgage_rate_pct": 6.1899999999999995,
+      "modified_duration_years": 8.158435082224894,
+      "treasury_observations": 22,
+      "term_premium_observations": 22,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2026-01",
+      "treasury_yield_pct": 4.2135,
+      "term_premium_pct": 0.7331341029105444,
+      "mortgage_rate_pct": 6.1025,
+      "modified_duration_years": 8.149933786660712,
+      "treasury_observations": 20,
+      "term_premium_observations": 20,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2026-02",
+      "treasury_yield_pct": 4.12578947368421,
+      "term_premium_pct": 0.6885022307706921,
+      "mortgage_rate_pct": 6.0475,
+      "modified_duration_years": 8.160528199339842,
+      "treasury_observations": 19,
+      "term_premium_observations": 19,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2026-03",
+      "treasury_yield_pct": 4.245909090909091,
+      "term_premium_pct": 0.6509336466861921,
+      "mortgage_rate_pct": 6.1775,
+      "modified_duration_years": 8.146002199312182,
+      "treasury_observations": 22,
+      "term_premium_observations": 22,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2026-04",
+      "treasury_yield_pct": 4.319090909090909,
+      "term_premium_pct": 0.6657100407666464,
+      "mortgage_rate_pct": 6.332,
+      "modified_duration_years": 8.137151898364571,
+      "treasury_observations": 22,
+      "term_premium_observations": 22,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2026-05",
+      "treasury_yield_pct": 4.484,
+      "term_premium_pct": 0.7261994820253103,
+      "mortgage_rate_pct": 6.4425,
+      "modified_duration_years": 8.117143014965318,
+      "treasury_observations": 20,
+      "term_premium_observations": 20,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2026-06",
+      "treasury_yield_pct": 4.47047619047619,
+      "term_premium_pct": 0.5833604959310614,
+      "mortgage_rate_pct": 6.49,
+      "modified_duration_years": 8.11878920314284,
+      "treasury_observations": 21,
+      "term_premium_observations": 21,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2026-07",
+      "treasury_yield_pct": 4.599545454545455,
+      "term_premium_pct": 0.6729960357652943,
+      "mortgage_rate_pct": 6.542,
+      "modified_duration_years": 8.103098045214121,
+      "treasury_observations": 22,
+      "term_premium_observations": 22,
+      "mortgage_observations": 5
+    },
+    {
+      "month": "2026-08",
+      "treasury_yield_pct": 4.684285714285714,
+      "term_premium_pct": 0.7915569685390822,
+      "mortgage_rate_pct": 6.6675,
+      "modified_duration_years": 8.092784743993102,
+      "treasury_observations": 21,
+      "term_premium_observations": 21,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2026-09",
+      "treasury_yield_pct": 4.989047619047619,
+      "term_premium_pct": 0.7154148882934175,
+      "mortgage_rate_pct": 6.8625,
+      "modified_duration_years": 8.055547540226828,
+      "treasury_observations": 21,
+      "term_premium_observations": 21,
+      "mortgage_observations": 4
+    },
+    {
+      "month": "2026-10",
+      "treasury_yield_pct": 5.130952380952381,
+      "term_premium_pct": 0.7895040123101896,
+      "mortgage_rate_pct": 7.328,
+      "modified_duration_years": 8.038172738729276,
+      "treasury_observations": 21,
+      "term_premium_observations": 21,
+      "mortgage_observations": 5
+    }
+  ],
+  "comparison": {
+    "start_month": "2023-07",
+    "end_month": "2023-10",
+    "start": {
+      "treasury_yield_pct": 3.8994999999999997,
+      "term_premium_pct": -0.7706181148712552,
+      "mortgage_rate_pct": 6.84,
+      "modified_duration_years": 8.187815182909263,
+      "treasury_observations": 20.0,
+      "term_premium_observations": 20.0,
+      "mortgage_observations": 4.0
+    },
+    "end": {
+      "treasury_yield_pct": 4.798095238095239,
+      "term_premium_pct": 0.3099097009624094,
+      "mortgage_rate_pct": 7.62,
+      "modified_duration_years": 8.07889796037489,
+      "treasury_observations": 21.0,
+      "term_premium_observations": 21.0,
+      "mortgage_observations": 4.0
+    },
+    "term_premium_change_bp": 108.05278158336647,
+    "mortgage_rate_change_bp": 78.00000000000003,
+    "treasury_yield_change_bp": 89.85952380952389,
+    "duration_change_years": -0.10891722253437308,
+    "interpretation": "Comparing July and October 2023 monthly means: the ACM 10-year term premium and 30-year mortgage rate rose together. This co-movement is consistent with higher required compensation for long-term interest-rate risk contributing to borrowing costs, but it does not establish causation. Mortgage spreads and expected short rates can also change."
+  },
+  "correlation": {
+    "start_month": "2019-01",
+    "end_month": "2025-12",
+    "level_observations": 84,
+    "paired_monthly_changes": 83,
+    "first_change_month": "2019-02",
+    "last_change_month": "2025-12",
+    "term_premium_mortgage_change_correlation": 0.6011942002490831,
+    "treasury_mortgage_change_correlation": 0.830641364536316,
+    "method": "Pearson correlation of month-to-month changes in monthly-average rates, measured in basis points. Monthly levels cover January 2019 through December 2025; changes cover February 2019 through December 2025. No level correlation or causal estimate is presented."
+  }
+}
